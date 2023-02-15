@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?php echo base_url() ?>/public/assets/user/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>/public/assets/user/css/style.css">
+    <title>MyCoinMedia | Login</title>
+</head>
+
+<body>
+
+
+    <div class="container mt-5">
+
+
+        <?php if (session()->getFlashdata('msg')) : ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong><?= session()->getFlashdata('msg'); ?></strong>.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>  
+        <?php endif; ?>
+        
+        <?php if(session()->getFlashdata('reg-success')){ ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong><?= session()->getFlashdata('reg-success'); ?></strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php } ?>
+
+        <?php if(session()->getFlashdata('reset-msg')){ ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong><?= session()->getFlashdata('reset-msg'); ?></strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php } ?>
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-12 col-lg-6">
+                <h3>Login</h3>
+                <form method="post" id="loginForm" class="form" action="<?php echo base_url('success');?>">
+
+                    <!-- Select option input -->
+                    <div class="form-outline mb-4">
+                        <select name="user_role" id="user_role" class="form-select" required>
+                            <option disabled selected>select</option>
+                            <option value="admin">Admin</option>
+                            <option value="user">User</option>
+                            <option value="affiliate">Affiliate User</option>
+                        </select>
+                    </div>
+
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="user_email">Email address</label>
+                        <input type="email" id="user_email" name="user_email" class="form-control" required/>
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="user_password">Password</label>
+                        <input type="password" id="user_password" name="user_password" class="form-control" required/>
+                    </div>
+
+                    <!-- Submit button -->
+                    <input type="submit" class="btn btn-primary btn-block mb-4" value="Login">
+                    <a href="<?= base_url(); ?>/forgetPassword" class="text-decoration-none  btn btn-danger mb-4">Forget Password?</a>
+                    
+                </form>
+                <div class="mb-4">
+                    <span class="">Do you want To Register ?</span>
+                    <a href="<?php echo base_url(); ?>/userRegister"> <button class="btn btn-primary ">Register</button></a>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+
+
+    
+    <script src="<?php echo base_url() ?>/public/assets/user/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="<?php echo base_url() ?>/public/assets/user/js/formjs/form-main.js"></script>
+    <script src="<?php echo base_url() ?>/public/assets/user/js/formjs/form.js"></script>
+    <script src="<?php echo base_url() ?>/public/assets/user/js/formjs/form-validator.min.js"></script>
+    <script src="<?php echo base_url() ?>/public/assets/user/js/formjs/validate.min.js"></script>
+    <script src="<?php echo base_url() ?>/public/assets/user/js/formjs/validation.js"></script>
+    <!-- <script src="<?php echo base_url() ?>/public/assets/user/js/formjs/validate.min.js"></script> -->
+    <script type="text/javascript">
+        setForm('loginForm');
+    </script>
+</body>
+
+</html>
